@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main()
+{
+    char phone[30], clean[30];
+    int i = 0, j = 0;
+
+    printf("Enter phone number: ");
+    scanf(" %29[^\n]", phone);
+
+    while (phone[i] != '\0')
+    {
+        if (phone[i] >= '0' && phone[i] <= '9')
+        {
+            clean[j] = phone[i];
+            j++;
+        }
+
+        i++;
+    }
+
+    clean[j] = '\0';
+
+    printf("Original number: %s\n", phone);
+    printf("Cleaned number: %s\n", clean);
+    printf("Number of digits: %d\n", j);
+
+    if (j == 11)
+        printf("Valid local number\n");
+    else
+        printf("Invalid length - please re-enter\n");
+
+    return 0;
+}

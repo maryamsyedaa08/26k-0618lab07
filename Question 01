@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+int main()
+{
+    int temp[7] = {31, 33, 35, 34, 38, 36, 32};
+    int highest,lowest;
+    float sum, average;
+
+    highest = temp[0];
+    lowest = temp[0];
+    sum = 0;
+    int n = sizeof(temp) / sizeof(temp[0]);
+ printf("size of array %d\n",n);
+    printf("Original temperatures:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("Day %d: %d C\n", i + 1, temp[i]);
+
+        sum = sum + temp[i];
+
+        if (temp[i] > highest)
+            highest = temp[i];
+
+        if (temp[i] < lowest)
+            lowest = temp[i];
+    }
+    
+    average = sum / n;
+
+    printf("\nHighest: %d C\n", highest);
+    printf("Lowest: %d C\n", lowest);
+    printf("Average: %.2f C\n", average);
+
+    temp[2] = 37;
+
+    highest = temp[0];
+    lowest = temp[0];
+    sum = 0;
+
+    printf("\nUpdated temperatures:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("Day %d: %d C\n", i + 1, temp[i]);
+
+        sum = sum + temp[i];
+
+        if (temp[i] > highest)
+            highest = temp[i];
+
+        if (temp[i] < lowest)
+            lowest = temp[i];
+    }
+
+    average = sum / n;
+
+    printf("\n after changing 3rd day temperature, the highest temperature is: %d C\n", highest);
+    printf("after changing 3rd day temperature, the lowest temperature is: %d C\n", lowest);
+    printf("after changing 3rd day temperature, the average temperature is: %.2f C\n", average);
+
+    printf("\nMemory addresses:\n");
+
+    for (int i = 0; i < n; i++)
+        printf("temp[%d] = %p\n", i, (void *)&temp[i]);
+
+    return 0;
+}
